@@ -1,0 +1,4 @@
+A média das temperaturas é: 22.64°C
+A mediana da lista de temperaturas é: 23.00°C
+A variância da lista é: 108.78
+O desvio-padrão da lista é: 10.43

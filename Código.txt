@@ -1,0 +1,29 @@
+import csv
+import statistics
+
+planilha1 = open('dados_sensor_01.csv')
+planilha2 = open('dados_sensor_02.csv')
+planilha3 = open('dados_sensor_03.csv')
+
+temp = []
+
+for planilha in [planilha1, planilha2, planilha3]:
+    reader = csv.reader(planilha, delimiter=',')
+    next(reader)
+    for row in reader:
+        temp.append(float(row[0]))
+        
+media = statistics.mean(temp)
+mediana = statistics.median(temp)
+variancia = statistics.variance(temp)
+desvio_padrao = statistics.stdev(temp)
+
+with open("relatorio_arq_temp.csv", mode="w", encoding='utf-8', newline='') as relatorio_arq_temp:
+    relatorio_arq_temp.write(f"A média das temperaturas é: {media:.2f}°C\n")
+    relatorio_arq_temp.write(f"A mediana da lista de temperaturas é: {mediana:.2f}°C\n")
+    relatorio_arq_temp.write(f"A variância da lista é: {variancia:.2f}\n")
+    relatorio_arq_temp.write(f"O desvio-padrão da lista é: {desvio_padrao:.2f}")
+    print(f'A média da temperatura é: {media:.2f} graus celsius.')
+    print(f'A mediana da temperatura é: {mediana:.2f} graus celsius.')
+    print(f'A variância de temperatura é: {variancia:.2f}')
+    print(f'O desvio padrão é: {desvio_padrao:.2f}')
